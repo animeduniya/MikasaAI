@@ -1,30 +1,36 @@
-async function generateImage() {
-  const output = document.getElementById("output");
-  output.innerHTML = "⏳ Generating AI Image...";
+document.getElementById('uploadForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-  try {
-    const response = await fetch("https://lexica.art/api/v1/search?q=anime");
-    const data = await response.json();
+    // Get the uploaded images
+    const files = document.getElementById('imageInput').files;
+    const previewContainer = document.getElementById('imagePreview');
+    const status = document.getElementById('status');
+    const videoLength = document.getElementById('videoLength').value;
+    const transition = document.getElementById('transition').value;
+    const speed = document.getElementById('speed').value;
 
-    if (data.images && data.images.length > 0) {
-      const imgUrl = data.images[0].src;
-      output.innerHTML = `<img src="${imgUrl}" alt="AI Generated Image" />`;
-    } else {
-      output.innerHTML = "⚠️ Failed to generate image.";
+    // Clear previous previews and status
+    previewContainer.innerHTML = '';
+    status.innerHTML = '';
+
+    // Show image previews
+    for (const file of files) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            const imgElement = document.createElement('img');
+            imgElement.src = e.target.result;
+            previewContainer.appendChild(imgElement);
+        }
+
+        reader.readAsDataURL(file);
     }
-  } catch (error) {
-    output.innerHTML = "🚨 Error generating image. Please try again.";
-  }
-}
 
-function generateVoice() {
-  const output = document.getElementById("output");
-  output.innerHTML = "🎙 Generating AI Voice using FakeYou...";
-  output.innerHTML = `<iframe src="https://fakeyou.com" width="80%" height="300px"></iframe>`;
-}
+    // Simulate the video creation process with options
+    status.innerHTML = `<p>Processing images with transition: ${transition}, speed: ${speed}, and video length: ${videoLength} seconds...</p>`;
 
-function generateSong() {
-  const output = document.getElementById("output");
-  output.innerHTML = "🎵 Generating AI Song using Riffusion...";
-  output.innerHTML = `<iframe src="https://riffusion.com" width="80%" height="300px"></iframe>`;
-}
+    // Simulate a delay for video creation
+    setTimeout(function() {
+        status.innerHTML = `<p>Video created successfully! <br><a href="#">Download your video</a></p>`;
+    }, 3000); // simulate 3 seconds processing time
+});
