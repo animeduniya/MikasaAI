@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #1e1e2f, #252547, #1e1e2f);
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  animation: fadeIn 1.5s ease;
+}
+
+h1 {
+  font-size: 3.5rem;
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 10px;
+}
+
+.mikasa {
+  animation: glow 1.5s infinite alternate;
+}
+
+.author {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  opacity: 0.7;
+}
+
+button {
+  background-color: #ff416c;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(255, 65, 108, 0.3);
+}
+
+button:hover {
+  background-color: #ff4b2b;
+  transform: translateY(-5px);
+}
+
+#output {
+  margin-top: 30px;
+}
+
+img {
+  max-width: 400px;
+  border-radius: 20px;
+  margin-top: 20px;
+  animation: fadeIn 1s;
+}
+
+/* Animations */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px #ff416c;
+  }
+  to {
+    text-shadow: 0 0 40px #ff4b2b;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
